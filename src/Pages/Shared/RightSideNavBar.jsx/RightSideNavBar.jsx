@@ -5,7 +5,9 @@ import qzone1 from "../../../assets/qZone1.png";
 import qzone2 from "../../../assets/qZone2.png";
 import qzone3 from "../../../assets/qZone3.png";
 import { Link } from "react-router-dom";
+
 const RightSideNavBar = () => {
+ 
   return (
     <div>
       <div className="w-full max-w-md p-1 rounded-md shadow  bg-gray-50 text-gray-800">

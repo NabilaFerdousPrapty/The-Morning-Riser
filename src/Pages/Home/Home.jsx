@@ -1,4 +1,3 @@
-
 import Header from "../Shared/Header/Header";
 import LeftSideNavbar from "../Shared/LeftSideNavbar/LeftSideNavbar";
 import Navbar from "../Shared/Navbar/Navbar";
@@ -7,12 +6,17 @@ import BreakingNews from "./BreakingNews";
 import Marquee from "react-fast-marquee";
 
 import { useState } from "react";
+import SingleNews from "../../components/SingleNews/SingleNews";
 
 const Home = () => {
   const [allData, setAllData] = useState([]);
   fetch("./categories.json")
     .then((response) => response.json())
     .then((category) => setAllData(category));
+  const [news, setNews] = useState([]);
+  fetch("./news.json")
+    .then((response) => response.json())
+    .then((data) => setNews(data));
   return (
     <div className="">
       <Header />
@@ -27,18 +31,17 @@ const Home = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 ">
         <div className="border-4 flex flex-col items-center  gap-3">
-        {
-  allData.map(category => (
-    <LeftSideNavbar key={category.id} category={category} />
-  ))
-}
-
+          {allData.map((category) => (
+            <LeftSideNavbar key={category.id} category={category} />
+          ))}
         </div>
         <div className="md:col-span-2 border-4">
-          <h2>News coming soon</h2>
+          {
+            news.map(singleNews=><SingleNews singleNews={singleNews} key={singleNews.category_id}></SingleNews>)
+          }
         </div>
         <div className="border-4">
-         <RightSideNavBar/>
+          <RightSideNavBar />
         </div>
       </div>
     </div>
