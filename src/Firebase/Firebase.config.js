@@ -4,13 +4,14 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+console.log('inside firebase confg',import.meta.env.VITE_PASS);
 const firebaseConfig = {
-  apiKey: "AIzaSyAb14sAB10hEtFecG_BJ07zgP-2Q8VnLjU",
-  authDomain: "the-morning-riser.firebaseapp.com",
-  projectId: "the-morning-riser",
-  storageBucket: "the-morning-riser.appspot.com",
-  messagingSenderId: "753592086076",
-  appId: "1:753592086076:web:cc87106252df59dd40dd39"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase

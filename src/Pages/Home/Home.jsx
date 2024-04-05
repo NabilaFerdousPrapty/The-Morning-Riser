@@ -37,7 +37,7 @@ const Home = () => {
         </div>
         <div className="md:col-span-2 border-4">
           {
-            news.map(singleNews=><SingleNews singleNews={singleNews} key={singleNews.category_id}></SingleNews>)
+            news.map(singleNews=><SingleNews singleNews={singleNews} key={singleNews._id}></SingleNews>)
           }
         </div>
         <div className="border-4">

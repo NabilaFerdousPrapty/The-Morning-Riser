@@ -8,6 +8,8 @@ import About from "../Pages/About/About";
 import Career from "../Pages/Career/Career";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import NewsDetails from "../Pages/NewsDetails/NewsDetails";
+import PrivateRoute from "./PrivateRoute";
   export const router = createBrowserRouter([
     {
       path: "/",
@@ -29,6 +31,9 @@ import SignUp from "../Pages/SignUp/SignUp";
        {
         path:'/signup',
         element:<SignUp/>
+       },{
+        path:'/news/:id',
+        element:<PrivateRoute><NewsDetails/></PrivateRoute>
        }
       ]
     },

@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 
-import user from '../../../assets/user.png'
+import userImg from '../../../assets/user.png'
+import { useContext } from "react";
+import { AuthContext } from "../../../components/AuthProvider/AuthProvider";
 
 const Navbar = () => {
+ const {user,logOut}=useContext(AuthContext);
+ const handleSignOut=()=>{
+  logOut()
+  .then(result=>console.log(result))
+  .catch(error=>console.log(error))
+ }
+ 
     return (
         <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -28,8 +37,14 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-3">
-    <img src={user} alt="" className="w-10" />
-    <Link to='/login' className="btn">Log in</Link>
+   
+   {
+    user? <div className="flex justify-between gap-4">
+      <button onClick={handleSignOut} className="btn">Signout</button>
+      <img src={userImg} alt="" className="w-10" />
+    </div>
+    : <Link to='/login' className="btn">Log in</Link>
+   }
   </div>
 </div>
     );
