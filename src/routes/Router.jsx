@@ -33,7 +33,9 @@ import PrivateRoute from "./PrivateRoute";
         element:<SignUp/>
        },{
         path:'/news/:id',
-        element:<PrivateRoute><NewsDetails/></PrivateRoute>
+        element:<PrivateRoute><NewsDetails/></PrivateRoute>,
+        loader:(()=>(fetch('/public/news.json')))
+      
        }
       ]
     },

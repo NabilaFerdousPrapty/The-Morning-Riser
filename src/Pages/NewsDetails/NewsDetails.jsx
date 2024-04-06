@@ -1,11 +1,24 @@
-import { useParams } from "react-router-dom";
+import { useParams,useLoaderData} from "react-router-dom";
 import Header from "../Shared/Header/Header";
 import RightSideNavBar from "../Shared/RightSideNavBar.jsx/RightSideNavBar";
 import Navbar from "../Shared/Navbar/Navbar";
 
 const NewsDetails = () => {
-  const { id } = useParams(); 
+ 
+
+  const {id } = useParams(); 
+  console.log(id);
+  console.log(typeof(id));
   
+  const news=useLoaderData();
+  console.log(news);
+  const oneNews = news.find((article) => article._id === id);
+
+  console.log(oneNews);
+  
+
+  //  const singleNews = news[id];
+  //  console.log(singleNews);
   return (
     <>
       <Header />
@@ -19,17 +32,19 @@ const NewsDetails = () => {
                 href="#"
                 className="mb-0 capitalize text-gray-800"
               >
-                Photography
+                
               </a>
             </div>
-            <p>{id}</p>
+            <p>
+              {/* {newsid} */}
+            </p>
           </div>
           <div className="space-y-4">
             <div className="space-y-2">
               <img
-                src="https://source.unsplash.com/random/480x360/?4"
+                src={oneNews.thumbnail_url}
                 alt=""
-                className="block object-cover object-center w-full rounded-md h-72 bg-gray-500"
+                className="block object-cover object-center  rounded-md w-full h-3/4 bg-gray-500"
               />
               <div className="flex items-center text-xs">
                 <span>6 min ago</span>
@@ -38,13 +53,11 @@ const NewsDetails = () => {
             <div className="space-y-2">
               <a rel="noopener noreferrer" href="#" className="block">
                 <h3 className="text-xl font-semibold text-indigo-600">
-                  Facere ipsa nulla corrupti praesentium pariatur architecto
+                 {oneNews.title}
                 </h3>
               </a>
               <p className="leading-snug text-gray-600">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Repellat, excepturi. Lorem ipsum dolor sit amet consectetur,
-                adipisicing elit. Repellat, excepturi.
+               {oneNews.details}
               </p>
             </div>
           </div>
